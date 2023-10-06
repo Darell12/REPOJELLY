@@ -21,4 +21,39 @@ export class LibraryService {
     const params = new HttpParams().set('api_key', environment.api_key);
     return this.http.get(url, { params });
   }
+
+  getItemsLibrary(userId: string, parentId: string) {
+    const url = `${environment.jellyUrl}/Users/${userId}/Items`;
+    const params = new HttpParams()
+      .set('api_key', environment.api_key)
+      .set('ParentId', parentId);
+    return this.http.get(url, { params });
+  }
+
+  postPlaySessionChange(
+    itemId: string,
+    startTimeTick: string
+  ): Observable<any> {
+    const url = `${environment.jellyUrl}/Items/${itemId}/PlaybackInfo?api_key=${environment.api_key}&StartTimeTicks=287268620`;
+    const userId = 'e7dac62c400741428dfccfd6069955fc'
+    const data = { userId };
+
+    return this.http.post(url, data);
+  }
+
+  // Realiza una consulta HTTP DELETE
+  deletePlaySessionChange(
+    SessionId: string,
+    deviceId: string
+  ): Observable<any> {
+    const url = `${environment.jellyUrl}/Videos/ActiveEncodings`;
+    const params = new HttpParams()
+      .set('api_key', environment.api_key)
+      .set('deviceId', deviceId)
+      .set('playSessionId', SessionId);
+
+    return this.http.delete(url, { params });
+  }
+
+  
 }

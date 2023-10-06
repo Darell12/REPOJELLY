@@ -1,0 +1,11 @@
+#video-container {
+  width: 100%;
+  max-width: 100vw; /* Establece el ancho máximo igual al ancho de la ventana */
+  overflow: hidden; /* Oculta cualquier parte del video que se desborde */
+}
+
+video {
+  width: 100%; /* Hace que el video ocupe el 100% del contenedor */
+  height: auto; /* Mantiene la proporción original del video */
+  display: block;
+}

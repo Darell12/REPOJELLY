@@ -1,19 +1,17 @@
-<video
-id="my-video"
-class="video-js vjs-default-button vjs-big-play-centered"
-  controls
-  playsinline
-  preload="auto"
-  width="640"
-  height="480"
-  data-setup="{}"
->
-  <source [src]="url"  type="application/x-mpegURL"/>
-  <p class="vjs-no-js">
-    To view this video please enable JavaScript, and consider upgrading to a
-    web browser that
-    <a href="https://videojs.com/html5-video-support/" target="_blank"
-    >supports HTML5 video</a
-    >
-  </p>
-</video>
+<div class="container mt-5 text-center object-fit-contain">
+  Your connection speed is: {{ connectionSpeed }}
+  <div>
+    <select [(ngModel)]="selectedQuality" (ngModelChange)="changeQuality2()">
+      <option value="low">360p</option>
+      <option value="high">1080p</option>
+    </select>
+  </div>
+  <div id="video-container">
+    <video
+      #videoPlayer
+      controls
+      [src]="getSelectedVideoSource()"
+      type="video/mp4"
+    ></video>
+  </div>
+</div>

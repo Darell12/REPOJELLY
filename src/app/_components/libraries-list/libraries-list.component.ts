@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LibraryService } from '@app/_services/library.service';
 import {
   CollectionObject,
   LibraryOptions,
 } from '@app/interfaces/library.interface';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-libraries-list',
@@ -16,13 +18,18 @@ export class LibrariesListComponent implements OnInit {
   Name: string = '';
   ItemId: string = '';
   Src: string = ``;
-  constructor(private libraryService: LibraryService) {}
-  
+  constructor(private libraryService: LibraryService, private router: Router) {}
+
   ngOnInit(): void {
     if (this.library) {
       this.Name = this.library.Name;
       this.ItemId = this.library?.ItemId;
-      this.Src = `http://localhost:8096/Items/${this.ItemId}/Images/Primary?fillHeight=221&fillWidth=392&quality=96`
+      this.Src = `${environment.jellyUrl}/Items/${this.ItemId}/Images/Primary?fillHeight=201&fillWidth=372&quality=96`;
     }
+  }
+
+  navigateToDetails() {
+    const queryParams = { id: this.ItemId };
+    this.router.navigate(['/library-detail'], { queryParams });
   }
 }

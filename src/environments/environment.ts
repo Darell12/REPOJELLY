@@ -5,7 +5,8 @@
 export const environment = {
     production: false,
     apiUrl: 'http://localhost:4000',
-    jellyUrl: "http://localhost:8096",
+    jellyUrl: "https://vqx2bsdz-8096.use.devtunnels.ms",
+    // jellyUrl: "http://localhost:8096",
     api_key: "0dfbdf14ce5f43498cf2ba5bb3d0ddca"
 };
 
